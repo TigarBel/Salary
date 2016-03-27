@@ -1,0 +1,7 @@
+D:\Шлак\Системное программное обеспечение\Option3\Option3\bin\Debug\Option3.dll
+D:\Шлак\Системное программное обеспечение\Option3\Option3\bin\Debug\Option3.pdb
+D:\Шлак\Системное программное обеспечение\Option3\Option3\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\Шлак\Системное программное обеспечение\Option3\Option3\obj\Debug\Option3.dll
+D:\Шлак\Системное программное обеспечение\Option3\Option3\obj\Debug\Option3.pdb
+D:\Шлак\Системное программное обеспечение\Option3\Option3\bin\Debug\Newtonsoft.Json.dll
+D:\Шлак\Системное программное обеспечение\Option3\Option3\bin\Debug\Newtonsoft.Json.xml
