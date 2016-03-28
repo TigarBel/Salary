@@ -370,7 +370,7 @@ namespace ApplicationLoader
 
                     int ageEmployee = rand.Next(47) + 18;
 
-                    double rateEmployee = (rand.Next(10) + 1) / 10;
+                    double rateEmployee = Convert.ToDouble(rand.Next(1, 10)) / 10;
                    
                     int salaryEmployee = rand.Next(60001) + 10000;
 
@@ -394,7 +394,7 @@ namespace ApplicationLoader
 
                     int ageEmployee = rand.Next(47) + 18;
 
-                    double rateEmployee = (rand.Next(10) + 1) / 10;
+                    double rateEmployee = Convert.ToDouble(rand.Next(1, 10)) / 10;
 
                     int salaryEmployee = rand.Next(60001) + 10000;
 
@@ -421,11 +421,11 @@ namespace ApplicationLoader
                     number = rand.Next(patronymicM.Length);
                     string patronymicEmployee = patronymicM[number];
 
-                    int ageEmployee = rand.Next(47) + 18;
+                    int ageEmployee = rand.Next(18, 65);
 
-                    int salaryPerHourEmployee = rand.Next(900) + 100;
+                    int salaryPerHourEmployee = rand.Next(100, 500);
 
-                    int hourEmployee = rand.Next(200) + 150;
+                    int hourEmployee = rand.Next(32,160);
 
                     number = rand.Next(nameofwork.Length);
                     string nameofworkEmployee = nameofwork[number];
@@ -445,11 +445,11 @@ namespace ApplicationLoader
                     number = rand.Next(patronymicF.Length);
                     string patronymicEmployee = patronymicF[number];
 
-                    int ageEmployee = rand.Next(47) + 18;
+                    int ageEmployee = rand.Next(18,65);
 
-                    int salaryPerHourEmployee = rand.Next(900) + 100;
+                    int salaryPerHourEmployee = rand.Next(100,500);
 
-                    int hourEmployee = rand.Next(200) + 150;
+                    int hourEmployee = rand.Next(32, 160);
 
                     number = rand.Next(nameofwork.Length);
                     string nameofworkEmployee = nameofwork[number];

@@ -389,6 +389,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(442, 394);
             this.Controls.Add(this.HourlyWageGroupBox);
             this.Controls.Add(this.Acсept);

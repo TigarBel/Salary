@@ -30,11 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.searchTextBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.searchStart = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +37,11 @@
             this.age = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.searchStart = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,41 +66,6 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(1018, 184);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(146, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Введите ключевое слово(а)";
-            // 
-            // searchTextBox
-            // 
-            this.searchTextBox.Location = new System.Drawing.Point(164, 12);
-            this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(203, 20);
-            this.searchTextBox.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Пример: Егор Беляев";
-            // 
-            // searchStart
-            // 
-            this.searchStart.Location = new System.Drawing.Point(384, 10);
-            this.searchStart.Name = "searchStart";
-            this.searchStart.Size = new System.Drawing.Size(140, 23);
-            this.searchStart.TabIndex = 5;
-            this.searchStart.Text = "Найти сотрудника(ов)";
-            this.searchStart.UseVisualStyleBackColor = true;
-            this.searchStart.Click += new System.EventHandler(this.searchStart_Click);
             // 
             // number
             // 
@@ -148,10 +113,46 @@
             this.description.ReadOnly = true;
             this.description.Width = 460;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(146, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Введите ключевое слово(а)";
+            // 
+            // searchTextBox
+            // 
+            this.searchTextBox.Location = new System.Drawing.Point(164, 12);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(203, 20);
+            this.searchTextBox.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(117, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Пример: Егор Беляев";
+            // 
+            // searchStart
+            // 
+            this.searchStart.Location = new System.Drawing.Point(384, 10);
+            this.searchStart.Name = "searchStart";
+            this.searchStart.Size = new System.Drawing.Size(140, 23);
+            this.searchStart.TabIndex = 5;
+            this.searchStart.Text = "Найти сотрудника(ов)";
+            this.searchStart.UseVisualStyleBackColor = true;
+            this.searchStart.Click += new System.EventHandler(this.searchStart_Click);
+            // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1042, 270);
             this.Controls.Add(this.searchStart);
             this.Controls.Add(this.label2);
