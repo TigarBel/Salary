@@ -340,6 +340,11 @@ namespace ApplicationLoader
             }
         }
 
+        /// <summary>
+        /// Кнопка по созданию случайных сотрудников
+        /// </summary>
+        /// <param name="sender">ничего</param>
+        /// <param name="e">ничего</param>
         private void RandomEmploy_Click(object sender, EventArgs e)
         {
             var rand = new Random();

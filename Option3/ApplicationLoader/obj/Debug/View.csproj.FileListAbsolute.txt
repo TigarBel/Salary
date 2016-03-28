@@ -39,3 +39,6 @@ D:\My Documents\Salary\Option3\ApplicationLoader\obj\Debug\ApplicationLoader.Sal
 D:\My Documents\Salary\Option3\ApplicationLoader\obj\Debug\ApplicationLoader.Properties.Resources.resources
 D:\My Documents\Salary\Option3\ApplicationLoader\obj\Debug\ApplicationLoader.SearchForm.resources
 D:\My Documents\Salary\Option3\ApplicationLoader\obj\Debug\View.csproj.GenerateResource.Cache
+D:\Salary\Option3\ApplicationLoader\bin\Debug\ApplicationLoader.exe.config
+D:\Salary\Option3\ApplicationLoader\obj\Debug\ApplicationLoader.exe
+D:\Salary\Option3\ApplicationLoader\obj\Debug\ApplicationLoader.pdb
