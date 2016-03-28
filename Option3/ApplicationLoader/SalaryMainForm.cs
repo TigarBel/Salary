@@ -344,15 +344,120 @@ namespace ApplicationLoader
         {
             var rand = new Random();
             int number = rand.Next(2);
+            string[] nameM = { "Владимир", "Владислав", "Вячеслав", "Георгий", "Александр", "Алексей", "Иван", "Евгений" };
+            string[] nameF = { "Александра", "Анна", "Анастасия", "Галина", "Елена", "Елизавета", "Екатерина" };
+            string[] surnameM = { "Петров", "Сидоров", "Кузнецов", "Григорьев", "Хохлов", "Колганов", "Харлампьев",
+		        "Васильев", "Урываев", "Тихонов", "Песков", "Темников", "Гаврилов", "Иванов", "Фиников" };
+            string[] surnameF = { "Петрова", "Сидорова", "Кузнецова", "Григорьева", "Хохлова", "Колганова", "Харлампьева",
+		        "Васильева", "Урываева", "Тихонова", "Пескова", "Темникова", "Гаврилова", "Иванова", "Финикова" };
+            string[] patronymicM = { "Владимирович", "Владиславович", "Вячеславович", "Георгиевич", "Александрович", "Алексеевич", "Иванович", "Евгениевич" };
+            string[] patronymicF = { "Владимировна", "Владиславна", "Вячеславна", "Георгиевна", "Александрвна", "Алексеевна", "Ивановна", "Евгениевна" };
+            string[] nameofwork = { "техник", "оператор", "менеджер", "связной", "секретарь", "машинист", "диспетчер", "механик" };
+
             if (number == 1)
             {
-                SalaryRate employee = new SalaryRate();
-                list.Add(employee);
+                number = rand.Next(2);
+                if (number == 1)
+                {
+                    number = rand.Next(nameM.Length);
+                    string nameEmployee = nameM[number];
+
+                    number = rand.Next(surnameM.Length);
+                    string surnameEmployee = surnameM[number];
+
+                    number = rand.Next(patronymicM.Length);
+                    string patronymicEmployee = patronymicM[number];
+
+                    int ageEmployee = rand.Next(47) + 18;
+
+                    double rateEmployee = (rand.Next(10) + 1) / 10;
+                   
+                    int salaryEmployee = rand.Next(60001) + 10000;
+
+                    number = rand.Next(nameofwork.Length);
+                    string nameofworkEmployee = nameofwork[number];
+
+                    SalaryRate employee = new SalaryRate(nameEmployee, surnameEmployee, patronymicEmployee, ageEmployee, rateEmployee,
+                    salaryEmployee, nameofworkEmployee);
+                    list.Add(employee);
+                }
+                else
+                {
+                    number = rand.Next(nameF.Length);
+                    string nameEmployee = nameF[number];
+
+                    number = rand.Next(surnameF.Length);
+                    string surnameEmployee = surnameF[number];
+
+                    number = rand.Next(patronymicF.Length);
+                    string patronymicEmployee = patronymicF[number];
+
+                    int ageEmployee = rand.Next(47) + 18;
+
+                    double rateEmployee = (rand.Next(10) + 1) / 10;
+
+                    int salaryEmployee = rand.Next(60001) + 10000;
+
+                    number = rand.Next(nameofwork.Length);
+                    string nameofworkEmployee = nameofwork[number];
+
+                    SalaryRate employee = new SalaryRate(nameEmployee, surnameEmployee, patronymicEmployee, ageEmployee, rateEmployee,
+                    salaryEmployee, nameofworkEmployee);
+                    list.Add(employee);
+                }
+                
             }
             else
             {
-                HourlyWage employee = new HourlyWage();
-                list.Add(employee);
+                number = rand.Next(2);
+                if (number == 1)
+                {
+                    number = rand.Next(nameM.Length);
+                    string nameEmployee = nameM[number];
+
+                    number = rand.Next(surnameM.Length);
+                    string surnameEmployee = surnameM[number];
+
+                    number = rand.Next(patronymicM.Length);
+                    string patronymicEmployee = patronymicM[number];
+
+                    int ageEmployee = rand.Next(47) + 18;
+
+                    int salaryPerHourEmployee = rand.Next(900) + 100;
+
+                    int hourEmployee = rand.Next(200) + 150;
+
+                    number = rand.Next(nameofwork.Length);
+                    string nameofworkEmployee = nameofwork[number];
+
+                    HourlyWage employee = new HourlyWage(nameEmployee, surnameEmployee, patronymicEmployee, ageEmployee, salaryPerHourEmployee,
+                    hourEmployee, nameofworkEmployee);
+                    list.Add(employee);
+                }
+                else
+                {
+                    number = rand.Next(nameF.Length);
+                    string nameEmployee = nameF[number];
+
+                    number = rand.Next(surnameF.Length);
+                    string surnameEmployee = surnameF[number];
+
+                    number = rand.Next(patronymicF.Length);
+                    string patronymicEmployee = patronymicF[number];
+
+                    int ageEmployee = rand.Next(47) + 18;
+
+                    int salaryPerHourEmployee = rand.Next(900) + 100;
+
+                    int hourEmployee = rand.Next(200) + 150;
+
+                    number = rand.Next(nameofwork.Length);
+                    string nameofworkEmployee = nameofwork[number];
+
+                    HourlyWage employee = new HourlyWage(nameEmployee, surnameEmployee, patronymicEmployee, ageEmployee, salaryPerHourEmployee,
+                    hourEmployee, nameofworkEmployee);
+                    list.Add(employee);
+                }
             }            
             FillingTable(); // Заполняем таблицу
             _createForm.Employee = null; // Сносим объект с второй формы
