@@ -1,0 +1,11 @@
+C:\Users\Егор\Desktop\Шлак\Системное программное обеспечение\Option3\ApplicationLoader\bin\Debug\ApplicationLoader.exe.config
+C:\Users\Егор\Desktop\Шлак\Системное программное обеспечение\Option3\ApplicationLoader\bin\Debug\ApplicationLoader.exe
+C:\Users\Егор\Desktop\Шлак\Системное программное обеспечение\Option3\ApplicationLoader\bin\Debug\ApplicationLoader.pdb
+C:\Users\Егор\Desktop\Шлак\Системное программное обеспечение\Option3\ApplicationLoader\obj\Debug\ApplicationLoader.csprojResolveAssemblyReference.cache
+C:\Users\Егор\Desktop\Шлак\Системное программное обеспечение\Option3\ApplicationLoader\obj\Debug\ApplicationLoader.Form1.resources
+C:\Users\Егор\Desktop\Шлак\Системное программное обеспечение\Option3\ApplicationLoader\obj\Debug\ApplicationLoader.Properties.Resources.resources
+C:\Users\Егор\Desktop\Шлак\Системное программное обеспечение\Option3\ApplicationLoader\obj\Debug\ApplicationLoader.csproj.GenerateResource.Cache
+C:\Users\Егор\Desktop\Шлак\Системное программное обеспечение\Option3\ApplicationLoader\obj\Debug\ApplicationLoader.exe
+C:\Users\Егор\Desktop\Шлак\Системное программное обеспечение\Option3\ApplicationLoader\obj\Debug\ApplicationLoader.pdb
+C:\Users\Егор\Desktop\Шлак\Системное программное обеспечение\Option3\ApplicationLoader\bin\Debug\Option3.dll
+C:\Users\Егор\Desktop\Шлак\Системное программное обеспечение\Option3\ApplicationLoader\bin\Debug\Option3.pdb
