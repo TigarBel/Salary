@@ -24,3 +24,6 @@ D:\Шлак\Системное программное обеспечение\Opt
 D:\Шлак\Системное программное обеспечение\Option3\ApplicationLoader\bin\Debug\Newtonsoft.Json.dll
 D:\Шлак\Системное программное обеспечение\Option3\ApplicationLoader\bin\Debug\Newtonsoft.Json.xml
 D:\Шлак\Системное программное обеспечение\Option3\ApplicationLoader\obj\Debug\ApplicationLoader.SearchForm.resources
+D:\My Documents\Salary\Option3\ApplicationLoader\bin\Debug\ApplicationLoader.exe.config
+D:\My Documents\Salary\Option3\ApplicationLoader\obj\Debug\ApplicationLoader.exe
+D:\My Documents\Salary\Option3\ApplicationLoader\obj\Debug\ApplicationLoader.pdb
