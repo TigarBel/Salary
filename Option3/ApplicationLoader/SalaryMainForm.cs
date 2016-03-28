@@ -319,13 +319,13 @@ namespace ApplicationLoader
                 MessageBox.Show(ex.Message);
             }
         }
-
+        //Кнопка по вызову формы по поиску сотрудника
         private void SearchEmployee_Click(object sender, EventArgs e)
         {
             _searchForm.LocalList = list;
             _searchForm.ShowDialog();
         }
-
+        // Кнопка создания новой базы данных
         private void CreateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow != null)
@@ -339,7 +339,11 @@ namespace ApplicationLoader
                 }
             }
         }
-
+        /// <summary>
+        /// Кнопка по созданию случайных сотрудников
+        /// </summary>
+        /// <param name="sender">ничего</param>
+        /// <param name="e">ничего</param>
         private void RandomEmploy_Click(object sender, EventArgs e)
         {
             var rand = new Random();
