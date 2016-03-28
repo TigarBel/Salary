@@ -325,7 +325,7 @@ namespace ApplicationLoader
             _searchForm.LocalList = list;
             _searchForm.ShowDialog();
         }
-
+        // Кнопка создания новой базы данных
         private void CreateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow != null)
@@ -339,7 +339,6 @@ namespace ApplicationLoader
                 }
             }
         }
-
         /// <summary>
         /// Кнопка по созданию случайных сотрудников
         /// </summary>
