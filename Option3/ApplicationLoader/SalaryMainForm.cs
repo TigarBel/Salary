@@ -338,6 +338,24 @@ namespace ApplicationLoader
                     dataGridView1.Rows.Clear();
                 }
             }
+        }
+
+        private void RandomEmploy_Click(object sender, EventArgs e)
+        {
+            var rand = new Random();
+            int number = rand.Next(2);
+            if (number == 1)
+            {
+                SalaryRate employee = new SalaryRate();
+                list.Add(employee);
+            }
+            else
+            {
+                HourlyWage employee = new HourlyWage();
+                list.Add(employee);
+            }            
+            FillingTable(); // Заполняем таблицу
+            _createForm.Employee = null; // Сносим объект с второй формы
         }        
     }
 }
