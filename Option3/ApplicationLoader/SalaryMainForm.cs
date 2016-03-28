@@ -254,7 +254,12 @@ namespace ApplicationLoader
                 {
                     var filename = openFileDialog.FileName;
 
-                    var deserializer = new JsonSerializer();
+                    var deserializer = new JsonSerializer
+                    {
+                        NullValueHandling = NullValueHandling.Ignore,
+                        TypeNameHandling = TypeNameHandling.Auto,
+                        Formatting = Newtonsoft.Json.Formatting.Indented
+                    };
                     using (StreamReader sr = new StreamReader(filename))
                     {
                         using (JsonReader reader = new JsonTextReader(sr))
