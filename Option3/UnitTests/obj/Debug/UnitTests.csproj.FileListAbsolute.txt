@@ -1,0 +1,7 @@
+D:\Salary\Option3\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
+D:\Salary\Option3\UnitTests\bin\Debug\UnitTests.dll
+D:\Salary\Option3\UnitTests\bin\Debug\UnitTests.pdb
+D:\Salary\Option3\UnitTests\bin\Debug\nunit.framework.dll
+D:\Salary\Option3\UnitTests\bin\Debug\nunit.framework.xml
+D:\Salary\Option3\UnitTests\obj\Debug\UnitTests.dll
+D:\Salary\Option3\UnitTests\obj\Debug\UnitTests.pdb

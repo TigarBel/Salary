@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+using NUnit.Framework;
 
-namespace Option3
+namespace UnitTests.Model
 {
-    [Serializable]
-    /// <summary>
-    /// Person(Name, Surname, Age) = Личность(Имя,Фамилия,Возраст)
-    /// </summary>
-    public class Person : IPerson
+    [TestFixture]
+    public class PersonTest
     {
         /// <summary>
         /// Имя сотрудника
@@ -36,7 +33,7 @@ namespace Option3
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
-        public Person()
+        public PersonTest()
         {
             _name = string.Empty;
             _surname = string.Empty;
@@ -51,14 +48,14 @@ namespace Option3
         /// <param name="surname">Фамилия сотрудника</param>
         /// <param name="patronymic">Отчество сотрудника(может отсутсвовать)</param>
         /// <param name="age">Возраст сотрудника</param>
-        public Person(string name, string surname, string patronymic, int age)
+        public PersonTest(string name, string surname, string patronymic, int age)
         {
             Name = name;
             Surname = surname;
             Patronymic = patronymic;
             Age = age;
         }
-
+        
         /// <summary>
         /// Имя сотрудника
         /// </summary>
@@ -78,24 +75,13 @@ namespace Option3
                 {
                     if (Char.IsDigit(value[i])) //набор чисел
                     {
-                        throw new PersonException(" В Имени не должно быть цифр!");
+                        throw new Exception(" В Имени не должно быть цифр!");
                     }
                     if (i == 0)
                     {
                         if ((value[0] < 'А') || (value[0] > 'Я')) //от А до Я
                         {
-                            throw new PersonException(" Имя должно быть с заглавной буквы!");
-                        }
-                    }
-                    if (value[i] == '-')
-                    {
-                        if (value.Length - 1 < i + 1)
-                        {
-                            throw new PersonException(" После дефиза, в имени, должна быть заглавная буква!");
-                        }
-                        if ((value[i + 1] < 'А') || (value[i + 1] > 'Я')) //от А до Я
-                        {
-                            throw new PersonException(" После дефиза имя должны быть с заглавной буквы!");
+                            throw new Exception(" Имя должны быть с заглавной буквы!");
                         }
                     }
                 }
@@ -123,24 +109,13 @@ namespace Option3
 
                     if (Char.IsDigit(value[i])) //набор чисел
                     {
-                        throw new PersonException(" В Фамилии не должно быть цифр!");
-                    }                   
+                        throw new Exception(" В Фамилии не должно быть цифр!");
+                    }
                     if (i == 0)
                     {
                         if ((value[0] < 'А') || (value[0] > 'Я')) //от А до Я
                         {
-                            throw new PersonException(" Фамилия должна быть с заглавной буквы!");
-                        }
-                    }
-                    if (value[i] == '-')
-                    {
-                        if (value.Length - 1 < i + 1)
-                        {
-                            throw new PersonException(" После дефиза, в фамилии, должна быть заглавная буква!");
-                        }
-                        if ((value[i + 1] < 'А') || (value[i + 1] > 'Я')) //от А до Я
-                        {
-                            throw new PersonException(" После дефиза фамилия должна быть с заглавной буквы!");
+                            throw new Exception(" Фамилия должна быть с заглавной буквы!");
                         }
                     }
                 }
@@ -151,7 +126,7 @@ namespace Option3
         /// <summary>
         /// Отчество сотрудника(может отсутсвовать)
         /// </summary>
-        public string Patronymic 
+        public string Patronymic
         {
             get
             {
@@ -166,24 +141,13 @@ namespace Option3
 
                         if (Char.IsDigit(value[i])) //набор чисел
                         {
-                            throw new PersonException(" В Отчестве не должно быть цифр!");
+                            throw new Exception(" В Отчестве не должно быть цифр!");
                         }
                         if (i == 0)
                         {
                             if ((value[0] < 'А') || (value[0] > 'Я')) //от А до Я
                             {
-                                throw new PersonException(" Отчество должно быть с заглавной буквы!");
-                            }
-                        }
-                        if (value[i] == '-')
-                        {
-                            if (value.Length - 1 < i + 1)
-                            {
-                                throw new PersonException(" После дефиза, в отчество, должна быть заглавная буква!");
-                            }
-                            if ((value[i + 1] < 'А') || (value[i + 1] > 'Я')) //от А до Я
-                            {
-                                throw new PersonException(" После дефиза отчество должно быть с заглавной буквы!");
+                                throw new Exception(" Отчество должно быть с заглавной буквы!");
                             }
                         }
                     }
@@ -191,7 +155,7 @@ namespace Option3
                 _patronymic = value;
             }
         }
-
+       
         /// <summary>
         /// Возраст сотрудника
         /// </summary>
@@ -205,11 +169,11 @@ namespace Option3
             {
                 if (value < 18)
                 {
-                    throw new PersonException(" Лицам до 18 регистрация запрещена!");
+                    throw new Exception(" Лицам до 18 регистрация запрещена!");
                 }
                 if (value > 65)
                 {
-                    throw new PersonException(" Пенсионерам регистрация запрещена!");
+                    throw new Exception(" Пенсионерам регистрация запрещена!");
                 }
                 _age = value;
             }

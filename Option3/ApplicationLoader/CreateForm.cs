@@ -69,10 +69,6 @@ namespace ApplicationLoader
             {
                 MessageBox.Show(exception.Message);
             }
-            catch (Exception exception) 
-            {
-                MessageBox.Show(exception.Message);
-            }
         }
 
         public ISalary Employee
