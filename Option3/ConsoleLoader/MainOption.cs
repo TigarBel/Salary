@@ -24,7 +24,7 @@ namespace ConsoleLoader
 
                 List<ISalary> list = new List<ISalary>();
                 list.Add(vovaPutin);
-                SalaryRate dimaMedvedew = new SalaryRate("Дима", "Медведев","", 40, 0.2, 100000, "Гос.");
+                SalaryRate dimaMedvedew = new SalaryRate("Дима", "Медведев", "", 40, 0.2, 100000, "Гос.");
                 list.Add(dimaMedvedew);
                 Console.WriteLine();
                 foreach (ISalary person in list)

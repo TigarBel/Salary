@@ -32,7 +32,7 @@
   <ItemGroup>
     <Reference Include="nunit.framework, Version=3.2.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Шлак\Системное программное обеспечение\NU\bin\addins\tests\nunit.framework.dll</HintPath>
+      <HintPath>..\..\..\Шлак\Системное программное обеспечение\NU\bin\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,11 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\PersonTest.cs" />
-    <Compile Include="Model\SalaryRateTest.cs" />
+    <Compile Include="Model\UnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Option3\Model.csproj">
+      <Project>{e21fd0f3-9f1f-4db2-af04-622918bdf0cd}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

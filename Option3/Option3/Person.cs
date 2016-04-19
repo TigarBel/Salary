@@ -76,9 +76,13 @@ namespace Option3
                 }
                 for (int i = 0; i < value.Length; i++)
                 {
-                    if (Char.IsDigit(value[i])) //набор чисел
+                    if (Char.IsDigit(value[i])) //набор чисел и знаков препинания
                     {
-                        throw new PersonException(" В Имени не должно быть цифр!");
+                        throw new PersonException(" В Имени не должно быть цифр и знаков препинания!");
+                    }
+                    if (Char.IsPunctuation(value[i]) && value[i] != '-') //набор знаков препинания
+                    {
+                        throw new PersonException(" В Имени не должно быть знаков препинания!");
                     }
                     if (i == 0)
                     {
@@ -86,6 +90,17 @@ namespace Option3
                         {
                             throw new PersonException(" Имя должно быть с заглавной буквы!");
                         }
+                    }
+                    if (i != 0)
+                    {
+                        if (value[i - 1] >= 'А' && value[i - 1] <= 'Я' && value[i] >= 'А' && value[i] <= 'Я')
+                        {
+                            throw new PersonException(" Заглавные буквы в имени не должны следовать друг за другом!");
+                        }
+                    }
+                    if ((value[i] < 'А' || value[i] > 'Я') && (value[i] < 'а' || value[i] > 'я') && value[i] != '-') //Только русские символы
+                    {
+                        throw new PersonException(" Имя должно состоять из сиволов русского алфавита!");
                     }
                     if (value[i] == '-')
                     {
@@ -124,13 +139,28 @@ namespace Option3
                     if (Char.IsDigit(value[i])) //набор чисел
                     {
                         throw new PersonException(" В Фамилии не должно быть цифр!");
-                    }                   
+                    }
+                    if (Char.IsPunctuation(value[i]) && value[i] != '-') //набор знаков препинания
+                    {
+                        throw new PersonException(" В Фамилии не должно быть знаков препинания!");
+                    }
                     if (i == 0)
                     {
                         if ((value[0] < 'А') || (value[0] > 'Я')) //от А до Я
                         {
                             throw new PersonException(" Фамилия должна быть с заглавной буквы!");
                         }
+                    }
+                    if (i != 0)
+                    {
+                        if (value[i - 1] >= 'А' && value[i - 1] <= 'Я' && value[i] >= 'А' && value[i] <= 'Я')
+                        {
+                            throw new PersonException(" Заглавные буквы в фамилии не должны следовать друг за другом!");
+                        }
+                    }
+                    if ((value[i] < 'А' || value[i] > 'Я') && (value[i] < 'а' || value[i] > 'я') && value[i] != '-') //Только русские символы
+                    {
+                        throw new PersonException(" Фамилия должна состоять из сиволов русского алфавита!");
                     }
                     if (value[i] == '-')
                     {
@@ -168,12 +198,28 @@ namespace Option3
                         {
                             throw new PersonException(" В Отчестве не должно быть цифр!");
                         }
+                        if (Char.IsPunctuation(value[i]) && value[i] != '-') //набор знаков препинания
+                        {
+                            throw new PersonException(" В Отчестве не должно быть знаков препинания!");
+                        }
                         if (i == 0)
                         {
                             if ((value[0] < 'А') || (value[0] > 'Я')) //от А до Я
                             {
                                 throw new PersonException(" Отчество должно быть с заглавной буквы!");
                             }
+                        }
+                        if (i != 0)
+                        {
+                            if (value[i - 1] >= 'А' && value[i - 1] <= 'Я' && value[i] >= 'А' && value[i] <= 'Я')
+                            {
+                                throw new PersonException(
+                                    " Заглавные буквы в отчестве не должны следовать друг за другом!");
+                            }
+                        }
+                        if ((value[i] < 'А' || value[i] > 'Я') && (value[i] < 'а' || value[i] > 'я') && value[i] != '-') //Только русские символы
+                        {
+                            throw new PersonException(" Отчество должно состоять из сиволов русского алфавита!");
                         }
                         if (value[i] == '-')
                         {

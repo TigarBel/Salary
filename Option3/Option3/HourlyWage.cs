@@ -108,6 +108,7 @@ namespace Option3
                 }
             _fine = (double)fine; 
         }
+        /// <summary>
         /// Время (часов работы) сотрудника
         /// </summary>
         public int Hour

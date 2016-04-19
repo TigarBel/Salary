@@ -115,7 +115,7 @@ namespace Option3
             get { return _rate; }
             set
             {
-                if ((value < 0) || (value > 1))
+                if ((value <= 0) || (value > 1))
                 {
                     throw new ArgumentException(" Ставка не должна быть меньше 0 и больше 1!");
                 }
