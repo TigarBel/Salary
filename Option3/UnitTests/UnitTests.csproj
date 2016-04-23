@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\UnitTests.cs" />
+    <Compile Include="Model\HourlyWageTest.cs" />
+    <Compile Include="Model\PersonTest.cs" />
+    <Compile Include="Model\SalaryRateTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

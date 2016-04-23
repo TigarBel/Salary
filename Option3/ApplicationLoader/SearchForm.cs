@@ -20,6 +20,9 @@ namespace ApplicationLoader
         public SearchForm()
         {
             InitializeComponent();
+            //EmployeeControl control = new EmployeeControl();
+            //this.Controls.Add(control);
+            //control.Location = new Point(50,50);
             //localList = l;
             //frm = mainForm;
         }

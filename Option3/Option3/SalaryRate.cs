@@ -76,15 +76,16 @@ namespace Option3
         /// <returns>Ставак * оклад</returns>
         public double SalaryAccrual()
         {
-            if (_rate * _salary - _fine > 0)
+            if (double.IsInfinity(Rate * Salary)) { throw new Exception("Зарплата больше хранимого значения!");}
+            if (Rate * Salary - _fine > 0)
             {
                 double fine = _fine;
                 _fine = 0;
-                return _rate * _salary - fine;// Работадатель выплатил деньги за работу
+                return Rate * Salary - fine;// Работадатель выплатил деньги за работу
             }
             else
             {
-                _fine = (_rate * _salary - _fine) * -1;// Работадатель не выплатил деньги, т.к. был выплачен штраф
+                _fine = (Rate * Salary - _fine) * -1;// Работадатель не выплатил деньги, т.к. был выплачен штраф
                 return 0;
             }
         }

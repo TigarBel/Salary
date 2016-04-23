@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalaryMainForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.RandomEmploy = new System.Windows.Forms.Button();
             this.SearchEmployee = new System.Windows.Forms.Button();
             this.ChangeDescription = new System.Windows.Forms.Button();
             this.RemoveEmployee = new System.Windows.Forms.Button();
@@ -42,6 +43,7 @@
             this.age = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salaryAccrual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.CreateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,7 +51,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
-            this.RandomEmploy = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -66,10 +67,20 @@
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1037, 527);
+            this.groupBox1.Size = new System.Drawing.Size(1149, 527);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "База данных о сотрудниках";
+            // 
+            // RandomEmploy
+            // 
+            this.RandomEmploy.Location = new System.Drawing.Point(342, 498);
+            this.RandomEmploy.Name = "RandomEmploy";
+            this.RandomEmploy.Size = new System.Drawing.Size(127, 23);
+            this.RandomEmploy.TabIndex = 5;
+            this.RandomEmploy.Text = "Случайный сотрудник";
+            this.RandomEmploy.UseVisualStyleBackColor = true;
+            this.RandomEmploy.Click += new System.EventHandler(this.RandomEmploy_Click);
             // 
             // SearchEmployee
             // 
@@ -93,7 +104,7 @@
             // 
             // RemoveEmployee
             // 
-            this.RemoveEmployee.Location = new System.Drawing.Point(850, 498);
+            this.RemoveEmployee.Location = new System.Drawing.Point(962, 498);
             this.RemoveEmployee.Name = "RemoveEmployee";
             this.RemoveEmployee.Size = new System.Drawing.Size(181, 23);
             this.RemoveEmployee.TabIndex = 2;
@@ -125,12 +136,13 @@
             this.patronymic,
             this.age,
             this.salary,
-            this.description});
+            this.description,
+            this.salaryAccrual});
             this.dataGridView1.Location = new System.Drawing.Point(6, 19);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1025, 473);
+            this.dataGridView1.Size = new System.Drawing.Size(1137, 473);
             this.dataGridView1.TabIndex = 0;
             // 
             // number
@@ -179,6 +191,13 @@
             this.description.ReadOnly = true;
             this.description.Width = 460;
             // 
+            // salaryAccrual
+            // 
+            this.salaryAccrual.HeaderText = "Зарплата в руб.";
+            this.salaryAccrual.Name = "salaryAccrual";
+            this.salaryAccrual.ReadOnly = true;
+            this.salaryAccrual.Width = 120;
+            // 
             // CreateToolStripMenuItem2
             // 
             this.CreateToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -216,26 +235,16 @@
             this.CreateToolStripMenuItem2});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1060, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1169, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // RandomEmploy
-            // 
-            this.RandomEmploy.Location = new System.Drawing.Point(342, 498);
-            this.RandomEmploy.Name = "RandomEmploy";
-            this.RandomEmploy.Size = new System.Drawing.Size(127, 23);
-            this.RandomEmploy.TabIndex = 5;
-            this.RandomEmploy.Text = "Случайный сотрудник";
-            this.RandomEmploy.UseVisualStyleBackColor = true;
-            this.RandomEmploy.Click += new System.EventHandler(this.RandomEmploy_Click);
             // 
             // SalaryMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1060, 566);
+            this.ClientSize = new System.Drawing.Size(1169, 566);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -263,6 +272,11 @@
         private System.Windows.Forms.Button ChangeDescription;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button SearchEmployee;
+        private System.Windows.Forms.ToolStripMenuItem CreateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OpenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SaveToolStripMenuItem;
+        private System.ComponentModel.BackgroundWorker backgroundWorker2;
+        private System.Windows.Forms.Button RandomEmploy;
         private System.Windows.Forms.DataGridViewTextBoxColumn number;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn surname;
@@ -270,11 +284,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn age;
         private System.Windows.Forms.DataGridViewTextBoxColumn salary;
         private System.Windows.Forms.DataGridViewTextBoxColumn description;
-        private System.Windows.Forms.ToolStripMenuItem CreateToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem OpenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem SaveToolStripMenuItem;
-        private System.ComponentModel.BackgroundWorker backgroundWorker2;
-        private System.Windows.Forms.Button RandomEmploy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn salaryAccrual;
 
     }
 }

@@ -76,15 +76,16 @@ namespace Option3
         /// <returns>Часы за работу * почасовую зарплату - штрафы</returns>
         public double SalaryAccrual()
         {
-            if (_hour * _salaryPerHour - _fine > 0)
+            if (double.IsInfinity(Hour * SalaryPerHour)) { throw new Exception("Зарплата больше хранимого значения!"); }
+            if (Hour * SalaryPerHour - _fine > 0)
             {
                 double fine = _fine;
                 _fine = 0;
-                return _hour * _salaryPerHour - fine;// Работадатель выплатил деньги за работу
+                return Hour * SalaryPerHour - fine;// Работадатель выплатил деньги за работу
             }
             else
             {
-                _fine = (_hour * _salaryPerHour - _fine) * -1;
+                _fine = (Hour * SalaryPerHour - _fine) * -1;
                 return 0;
             }
 
@@ -116,9 +117,9 @@ namespace Option3
             get { return _hour; }
             set
             {
-                if (value < 0)
+                if (value < 0 || value > 672)
                 {
-                    throw new ArgumentException(" Часов работы за месяц не может быть меньше 0!");
+                    throw new ArgumentException(" Часов работы за месяц не может быть меньше 0 или больше 672!");
                 }
                 _hour = value;
             }

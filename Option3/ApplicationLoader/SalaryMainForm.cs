@@ -19,8 +19,6 @@ namespace ApplicationLoader
 {
     public partial class SalaryMainForm : Form
     {
-        //private DataTable _datatable;   
-
         private List<ISalary> list = new List<ISalary>();
 
         private CreateForm _createForm = new CreateForm();
@@ -29,64 +27,9 @@ namespace ApplicationLoader
 
         public SalaryMainForm()
         {
-            InitializeComponent();
-            //CreateDataTable();            
+            InitializeComponent();   
+            EmployeeControl ec = new EmployeeControl();
         }
-
-        //private void CreateDataTable()
-        //{
-        //    _datatable = new DataTable();
-        //    var column = new DataColumn("#")
-        //    {
-        //        Caption = "Number",
-        //        DataType = typeof(int),
-        //        ReadOnly = true
-        //    };
-        //    _datatable.Columns.Add(column);
-        //    var column2 = new DataColumn("Имя")
-        //    {
-        //        Caption = "Name",
-        //        DataType = typeof(string),
-        //        ReadOnly = true
-        //    };
-        //    _datatable.Columns.Add(column2);
-        //    var column3 = new DataColumn("Фамилия")
-        //    {
-        //        Caption = "Surname",
-        //        DataType = typeof(string),
-        //        ReadOnly = true
-        //    };
-        //    _datatable.Columns.Add(column3);
-        //    var column4 = new DataColumn("Отчество")
-        //    {
-        //        Caption = "Patronymic",
-        //        DataType = typeof(string),
-        //        ReadOnly = true
-        //    };
-        //    _datatable.Columns.Add(column4);
-        //    var column5 = new DataColumn("Возраст")
-        //    {
-        //        Caption = "Age",
-        //        DataType = typeof(int),
-        //        ReadOnly = true
-        //    };
-        //    _datatable.Columns.Add(column5);
-        //    var column6 = new DataColumn("Вид зарплаты")
-        //    {
-        //        Caption = "Salary",
-        //        DataType = typeof(string),
-        //        ReadOnly = true
-        //    };
-        //    _datatable.Columns.Add(column6);
-        //    var column7 = new DataColumn("Описание")
-        //    {
-        //        Caption = "Description",
-        //        DataType = typeof(string),
-        //        ReadOnly = true
-        //    };
-        //    _datatable.Columns.Add(column7);
-        //    dataGridView1.DataSource = _datatable;
-        //}
 
         private void AddEmployee_Click(object sender, EventArgs e)
         {                                             
@@ -152,11 +95,11 @@ namespace ApplicationLoader
         private void FillingTable()
         {
             dataGridView1.Rows.Clear(); // Очищаем таблицу           
-            foreach (ISalary person in list) // Заполняем таблицу
+            foreach (ISalary employee in list) // Заполняем таблицу
             {
                 int number = dataGridView1.RowCount;
-                dataGridView1.Rows.Add(number, person.Name, person.Surname, person.Patronymic,
-                    person.Age, person.NameOfSalary, person.ShowPersonalSettings());
+                dataGridView1.Rows.Add(number, employee.Name, employee.Surname, employee.Patronymic,
+                    employee.Age, employee.NameOfSalary, employee.ShowPersonalSettings(), employee.SalaryAccrual());
             }
         }
 
@@ -244,74 +187,85 @@ namespace ApplicationLoader
         {
             try
             {
-                list.Clear();
-
-                var openFileDialog = new OpenFileDialog();
-                openFileDialog.Filter =
-                    "myfile files (*.myfile)|*.myfile|txt files (*.txt)|*.txt|All files (*.*)|*.*";
-                openFileDialog.RestoreDirectory = true;
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                bool chek = false;
+                if (dataGridView1.Rows.Count == 0 && list.Count == 0)
                 {
-                    var filename = openFileDialog.FileName;
+                    chek = true;}
+                if (dataGridView1.Rows.Count != 0 && list.Count != 0 &&
+                    MessageBox.Show("Таблица или список не пусты, вы действительно хотите открыть другой файл?",
+                        "Внимание!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    chek = true;}
+                if(chek)
+                {                    
+                    var openFileDialog = new OpenFileDialog();
+                    openFileDialog.Filter =
+                        "myfile files (*.myfile)|*.myfile|txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                    openFileDialog.RestoreDirectory = true;
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        list.Clear();
+                        var filename = openFileDialog.FileName;
 
-                    var deserializer = new JsonSerializer
-                    {
-                        NullValueHandling = NullValueHandling.Ignore,
-                        TypeNameHandling = TypeNameHandling.Auto,
-                        Formatting = Newtonsoft.Json.Formatting.Indented
-                    };
-                    using (StreamReader sr = new StreamReader(filename))
-                    {
-                        using (JsonReader reader = new JsonTextReader(sr))
+                        var deserializer = new JsonSerializer
                         {
-                            list = deserializer.Deserialize<List<ISalary>>(reader);
+                            NullValueHandling = NullValueHandling.Ignore,
+                            TypeNameHandling = TypeNameHandling.Auto,
+                            Formatting = Newtonsoft.Json.Formatting.Indented
+                        };
+                        using (StreamReader sr = new StreamReader(filename))
+                        {
+                            using (JsonReader reader = new JsonTextReader(sr))
+                            {
+                                list = deserializer.Deserialize<List<ISalary>>(reader);
+                            }
                         }
+
+                        // Xml Десериализация***
+                        //// Create an instance of the XmlSerializer specifying type and namespace.
+                        //XmlSerializer serializer = new XmlSerializer(typeof(DataTable));
+
+                        //// A FileStream is needed to read the XML document.
+                        //FileStream fs = new FileStream(filename, FileMode.Open);
+                        //XmlReader reader = XmlReader.Create(fs);
+
+                        //// Declare an object variable of the type to be deserialized.
+                        //DataTable table;
+
+                        //// Use the Deserialize method to restore the object's state.
+                        //table = (DataTable)serializer.Deserialize(reader);
+                        ////dataGridView1.DataSource = table;
+                        //fs.Close();
+                        //for (int i = 0; i < table.Rows.Count; i++)
+                        //{
+                        //    ISalary employee;
+                        //    // Если в строке хранится объект SalaryRate
+                        //    if (table.Rows[i]["Вид зарплаты"].ToString() == "Оклад по ставке")
+                        //    { // Заполняем новый объект
+                        //        employee = new SalaryRate(table.Rows[i]["Имя"].ToString(),
+                        //            table.Rows[i]["Фамилия"].ToString(),
+                        //            table.Rows[i]["Отчество"].ToString(),
+                        //            Convert.ToInt32(table.Rows[i]["Возраст"].ToString()),
+                        //            Convert.ToDouble(table.Rows[i]["Ставка/Почасовая оплата"].ToString()),
+                        //            Convert.ToInt32(table.Rows[i]["Оклад/Часов рабочего месяца"].ToString()),
+                        //            table.Rows[i]["Должность"].ToString());
+                        //        list.Add(employee); // Вносим в список
+                        //    }
+                        //    if (table.Rows[i]["Вид зарплаты"].ToString() == "Почасовая оплата") // Если в строке хранится объект HourlyWage
+                        //    { // Заполняем новый объект
+                        //        employee = new HourlyWage(table.Rows[i]["Имя"].ToString(),
+                        //            table.Rows[i]["Фамилия"].ToString(),
+                        //            table.Rows[i]["Отчество"].ToString(),
+                        //            Convert.ToInt32(table.Rows[i]["Возраст"].ToString()),
+                        //            Convert.ToInt32(table.Rows[i]["Ставка/Почасовая оплата"].ToString()),
+                        //            Convert.ToInt32(table.Rows[i]["Оклад/Часов рабочего месяца"].ToString()),
+                        //            table.Rows[i]["Должность"].ToString());
+                        //        list.Add(employee); // Вносим в список
+                        //    }
+                        //}
                     }
-
-                    // Xml Десериализация***
-                    //// Create an instance of the XmlSerializer specifying type and namespace.
-                    //XmlSerializer serializer = new XmlSerializer(typeof(DataTable));
-
-                    //// A FileStream is needed to read the XML document.
-                    //FileStream fs = new FileStream(filename, FileMode.Open);
-                    //XmlReader reader = XmlReader.Create(fs);
-
-                    //// Declare an object variable of the type to be deserialized.
-                    //DataTable table;
-
-                    //// Use the Deserialize method to restore the object's state.
-                    //table = (DataTable)serializer.Deserialize(reader);
-                    ////dataGridView1.DataSource = table;
-                    //fs.Close();
-                    //for (int i = 0; i < table.Rows.Count; i++)
-                    //{
-                    //    ISalary employee;
-                    //    // Если в строке хранится объект SalaryRate
-                    //    if (table.Rows[i]["Вид зарплаты"].ToString() == "Оклад по ставке")
-                    //    { // Заполняем новый объект
-                    //        employee = new SalaryRate(table.Rows[i]["Имя"].ToString(),
-                    //            table.Rows[i]["Фамилия"].ToString(),
-                    //            table.Rows[i]["Отчество"].ToString(),
-                    //            Convert.ToInt32(table.Rows[i]["Возраст"].ToString()),
-                    //            Convert.ToDouble(table.Rows[i]["Ставка/Почасовая оплата"].ToString()),
-                    //            Convert.ToInt32(table.Rows[i]["Оклад/Часов рабочего месяца"].ToString()),
-                    //            table.Rows[i]["Должность"].ToString());
-                    //        list.Add(employee); // Вносим в список
-                    //    }
-                    //    if (table.Rows[i]["Вид зарплаты"].ToString() == "Почасовая оплата") // Если в строке хранится объект HourlyWage
-                    //    { // Заполняем новый объект
-                    //        employee = new HourlyWage(table.Rows[i]["Имя"].ToString(),
-                    //            table.Rows[i]["Фамилия"].ToString(),
-                    //            table.Rows[i]["Отчество"].ToString(),
-                    //            Convert.ToInt32(table.Rows[i]["Возраст"].ToString()),
-                    //            Convert.ToInt32(table.Rows[i]["Ставка/Почасовая оплата"].ToString()),
-                    //            Convert.ToInt32(table.Rows[i]["Оклад/Часов рабочего месяца"].ToString()),
-                    //            table.Rows[i]["Должность"].ToString());
-                    //        list.Add(employee); // Вносим в список
-                    //    }
-                    //}
+                    FillingTable(); // Заполняем таблицу
                 }
-                FillingTable(); // Заполняем таблицу
             }
             catch(Exception ex)
             {
@@ -345,124 +299,8 @@ namespace ApplicationLoader
         /// <param name="sender">ничего</param>
         /// <param name="e">ничего</param>
         private void RandomEmploy_Click(object sender, EventArgs e)
-        {
-            var rand = new Random();
-            int number = rand.Next(2);
-            string[] nameM = { "Владимир", "Владислав", "Вячеслав", "Георгий", "Александр", "Алексей", "Иван", "Евгений" };
-            string[] nameF = { "Александра", "Анна", "Анастасия", "Галина", "Елена", "Елизавета", "Екатерина" };
-            string[] surnameM = { "Петров", "Сидоров", "Кузнецов", "Григорьев", "Хохлов", "Колганов", "Харлампьев",
-		        "Васильев", "Урываев", "Тихонов", "Песков", "Темников", "Гаврилов", "Иванов", "Фиников" };
-            string[] surnameF = { "Петрова", "Сидорова", "Кузнецова", "Григорьева", "Хохлова", "Колганова", "Харлампьева",
-		        "Васильева", "Урываева", "Тихонова", "Пескова", "Темникова", "Гаврилова", "Иванова", "Финикова" };
-            string[] patronymicM = { "Владимирович", "Владиславович", "Вячеславович", "Георгиевич", "Александрович", "Алексеевич", "Иванович", "Евгениевич" };
-            string[] patronymicF = { "Владимировна", "Владиславна", "Вячеславна", "Георгиевна", "Александрвна", "Алексеевна", "Ивановна", "Евгениевна" };
-            string[] nameofwork = { "техник", "оператор", "менеджер", "связной", "секретарь", "машинист", "диспетчер", "механик" };
-
-            if (number == 1)
-            {
-                number = rand.Next(2);
-                if (number == 1)
-                {
-                    number = rand.Next(nameM.Length);
-                    string nameEmployee = nameM[number];
-
-                    number = rand.Next(surnameM.Length);
-                    string surnameEmployee = surnameM[number];
-
-                    number = rand.Next(patronymicM.Length);
-                    string patronymicEmployee = patronymicM[number];
-
-                    int ageEmployee = rand.Next(47) + 18;
-
-                    double rateEmployee = Convert.ToDouble(rand.Next(1, 10)) / 10;
-                   
-                    int salaryEmployee = rand.Next(60001) + 10000;
-
-                    number = rand.Next(nameofwork.Length);
-                    string nameofworkEmployee = nameofwork[number];
-
-                    SalaryRate employee = new SalaryRate(nameEmployee, surnameEmployee, patronymicEmployee, ageEmployee, rateEmployee,
-                    salaryEmployee, nameofworkEmployee);
-                    list.Add(employee);
-                }
-                else
-                {
-                    number = rand.Next(nameF.Length);
-                    string nameEmployee = nameF[number];
-
-                    number = rand.Next(surnameF.Length);
-                    string surnameEmployee = surnameF[number];
-
-                    number = rand.Next(patronymicF.Length);
-                    string patronymicEmployee = patronymicF[number];
-
-                    int ageEmployee = rand.Next(47) + 18;
-
-                    double rateEmployee = Convert.ToDouble(rand.Next(1, 10)) / 10;
-
-                    int salaryEmployee = rand.Next(60001) + 10000;
-
-                    number = rand.Next(nameofwork.Length);
-                    string nameofworkEmployee = nameofwork[number];
-
-                    SalaryRate employee = new SalaryRate(nameEmployee, surnameEmployee, patronymicEmployee, ageEmployee, rateEmployee,
-                    salaryEmployee, nameofworkEmployee);
-                    list.Add(employee);
-                }
-                
-            }
-            else
-            {
-                number = rand.Next(2);
-                if (number == 1)
-                {
-                    number = rand.Next(nameM.Length);
-                    string nameEmployee = nameM[number];
-
-                    number = rand.Next(surnameM.Length);
-                    string surnameEmployee = surnameM[number];
-
-                    number = rand.Next(patronymicM.Length);
-                    string patronymicEmployee = patronymicM[number];
-
-                    int ageEmployee = rand.Next(18, 65);
-
-                    int salaryPerHourEmployee = rand.Next(100, 500);
-
-                    int hourEmployee = rand.Next(32,160);
-
-                    number = rand.Next(nameofwork.Length);
-                    string nameofworkEmployee = nameofwork[number];
-
-                    HourlyWage employee = new HourlyWage(nameEmployee, surnameEmployee, patronymicEmployee, ageEmployee, salaryPerHourEmployee,
-                    hourEmployee, nameofworkEmployee);
-                    list.Add(employee);
-                }
-                else
-                {
-                    number = rand.Next(nameF.Length);
-                    string nameEmployee = nameF[number];
-
-                    number = rand.Next(surnameF.Length);
-                    string surnameEmployee = surnameF[number];
-
-                    number = rand.Next(patronymicF.Length);
-                    string patronymicEmployee = patronymicF[number];
-
-                    int ageEmployee = rand.Next(18,65);
-
-                    int salaryPerHourEmployee = rand.Next(100,500);
-
-                    int hourEmployee = rand.Next(32, 160);
-
-                    number = rand.Next(nameofwork.Length);
-                    string nameofworkEmployee = nameofwork[number];
-
-                    HourlyWage employee = new HourlyWage(nameEmployee, surnameEmployee, patronymicEmployee, ageEmployee, salaryPerHourEmployee,
-                    hourEmployee, nameofworkEmployee);
-                    list.Add(employee);
-                }
-            }            
+        {            
+            list.Add(new RandomEmployee().Employee);            
             FillingTable(); // Заполняем таблицу
             _createForm.Employee = null; // Сносим объект с второй формы
         }        
