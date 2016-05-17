@@ -19,18 +19,29 @@ namespace ApplicationLoader
 {
     public partial class SalaryMainForm : Form
     {
+        /// <summary>
+        /// Глобальный список работников
+        /// </summary>
         private List<ISalary> list = new List<ISalary>();
-
+        /// <summary>
+        /// Форма созднания/измениня работника
+        /// </summary>
         private CreateForm _createForm = new CreateForm();
-
-        private SearchForm _searchForm = new SearchForm();      
+        /// <summary>
+        /// Форма поиска работника(ов) по описанию
+        /// </summary>
+        private SearchForm _searchForm = new SearchForm();
 
         public SalaryMainForm()
         {
-            InitializeComponent();   
-            EmployeeControl ec = new EmployeeControl();
+            InitializeComponent();
+            employeeControl1.ReadOnly = true; // Включение режима чтения
         }
-
+        /// <summary>
+        /// Добавлеие работника в список
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddEmployee_Click(object sender, EventArgs e)
         {                                             
             _createForm.ShowDialog(); //Вызов окна
@@ -38,7 +49,28 @@ namespace ApplicationLoader
             FillingTable(); // Заполняем таблицу
             _createForm.Employee = null; // Сносим объект с второй формы
         }
-
+        /// <summary>
+        /// Изменение работника в списке
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ChangeDescription_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                int id = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString());// Находим работника id
+                _createForm.Employee = list[id]; // Вносим выбранный объект в новую форму
+                _createForm.ShowDialog(); //Вызов окна
+                list[id] = _createForm.Employee; // Вносим в список работника
+                FillingTable(); // Заполняем таблицу
+                _createForm.Employee = null; // Сносим объект с второй формы
+            }
+        }
+        /// <summary>
+        /// Удаление работника из списка
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RemoveEmployee_Click(object sender, EventArgs e)
         {
             try
@@ -65,27 +97,18 @@ namespace ApplicationLoader
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void ChangeDescription_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.CurrentRow != null)
-            {
-                _createForm.Employee = list[dataGridView1.CurrentRow.Index]; // Вносим выбранный объект в новую форму
-                _createForm.ShowDialog(); //Вызов окна
-                list[dataGridView1.CurrentRow.Index] = _createForm.Employee; // Вносим в список работника
-                FillingTable(); // Заполняем таблицу
-                _createForm.Employee = null; // Сносим объект с второй формы
-            }
-        }     
+        }            
 
         private void SalaryMainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var result = MessageBox.Show("Хотите выйти? Не сохранённые данные будут удалены!", 
-                "Внимание!", MessageBoxButtons.YesNo);
-            if (result == DialogResult.No)
+            if (dataGridView1.CurrentRow != null)
             {
-                e.Cancel = true;
+                var result = MessageBox.Show("Хотите выйти? Не сохранённые данные будут удалены!",
+                    "Внимание!", MessageBoxButtons.YesNo);
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
             }
         }
 
@@ -102,7 +125,11 @@ namespace ApplicationLoader
                     employee.Age, employee.NameOfSalary, employee.ShowPersonalSettings(), employee.SalaryAccrual());
             }
         }
-
+        /// <summary>
+        /// Вкладка файл-сохранение
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -182,7 +209,11 @@ namespace ApplicationLoader
                 MessageBox.Show("Произошла ошибка. Файл не сохранился.");
             }
         }
-
+        /// <summary>
+        /// Вкладка файл-открыть
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -273,13 +304,21 @@ namespace ApplicationLoader
                 MessageBox.Show(ex.Message);
             }
         }
-        //Кнопка по вызову формы по поиску сотрудника
+        /// <summary>
+        /// Кнопка по вызову формы по поиску сотрудника
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SearchEmployee_Click(object sender, EventArgs e)
         {
             _searchForm.LocalList = list;
             _searchForm.ShowDialog();
         }
-        // Кнопка создания новой базы данных
+        /// <summary>
+        /// Кнопка создания новой базы данных
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CreateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow != null)
@@ -302,7 +341,20 @@ namespace ApplicationLoader
         {            
             list.Add(new RandomEmployee().Employee);            
             FillingTable(); // Заполняем таблицу
-            _createForm.Employee = null; // Сносим объект с второй формы
-        }        
+        }
+        /// <summary>
+        /// Клик эвент по переносу работника из таблицы в EmployeeControl
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_RowEnter_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                string str = dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString();
+                int id = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString());
+                employeeControl1.Employee = list[id];
+            }
+        }
     }
 }

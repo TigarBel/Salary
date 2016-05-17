@@ -60,7 +60,7 @@
             this.age,
             this.salary,
             this.description});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 76);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 58);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
@@ -116,7 +116,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 19);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(146, 13);
             this.label1.TabIndex = 2;
@@ -124,7 +124,7 @@
             // 
             // searchTextBox
             // 
-            this.searchTextBox.Location = new System.Drawing.Point(164, 12);
+            this.searchTextBox.Location = new System.Drawing.Point(164, 9);
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(203, 20);
             this.searchTextBox.TabIndex = 3;
@@ -132,7 +132,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 49);
+            this.label2.Location = new System.Drawing.Point(12, 31);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(117, 13);
             this.label2.TabIndex = 4;
@@ -140,10 +140,10 @@
             // 
             // searchStart
             // 
-            this.searchStart.Location = new System.Drawing.Point(384, 10);
+            this.searchStart.Location = new System.Drawing.Point(384, 9);
             this.searchStart.Name = "searchStart";
             this.searchStart.Size = new System.Drawing.Size(140, 23);
-            this.searchStart.TabIndex = 5;
+            this.searchStart.TabIndex = 2;
             this.searchStart.Text = "Найти сотрудника(ов)";
             this.searchStart.UseVisualStyleBackColor = true;
             this.searchStart.Click += new System.EventHandler(this.searchStart_Click);
@@ -153,7 +153,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1042, 270);
+            this.ClientSize = new System.Drawing.Size(1034, 248);
             this.Controls.Add(this.searchStart);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.searchTextBox);

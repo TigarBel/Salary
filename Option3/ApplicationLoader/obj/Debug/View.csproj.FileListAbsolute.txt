@@ -14,3 +14,5 @@ D:\Salary\Option3\ApplicationLoader\obj\Debug\ApplicationLoader.SearchForm.resou
 D:\Salary\Option3\ApplicationLoader\obj\Debug\View.csproj.GenerateResource.Cache
 D:\Salary\Option3\ApplicationLoader\obj\Debug\ApplicationLoader.exe
 D:\Salary\Option3\ApplicationLoader\obj\Debug\ApplicationLoader.pdb
+D:\Salary\Option3\ApplicationLoader\obj\Debug\ApplicationLoader.HourlyWageControl.resources
+D:\Salary\Option3\ApplicationLoader\obj\Debug\ApplicationLoader.SalaryRateControl.resources

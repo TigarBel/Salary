@@ -60,6 +60,12 @@
     <Compile Include="EmployeeControl.Designer.cs">
       <DependentUpon>EmployeeControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="HourlyWageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HourlyWageControl.Designer.cs">
+      <DependentUpon>HourlyWageControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="SalaryMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalaryRateControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SalaryRateControl.Designer.cs">
+      <DependentUpon>SalaryRateControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="SearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeControl.resx">
       <DependentUpon>EmployeeControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HourlyWageControl.resx">
+      <DependentUpon>HourlyWageControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalaryMainForm.resx">
       <DependentUpon>SalaryMainForm.cs</DependentUpon>
@@ -92,6 +107,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SalaryRateControl.resx">
+      <DependentUpon>SalaryRateControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SearchForm.resx">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </EmbeddedResource>

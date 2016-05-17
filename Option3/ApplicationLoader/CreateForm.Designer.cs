@@ -63,6 +63,8 @@
             this.SurnameOfEmployeeHourlyWage = new System.Windows.Forms.TextBox();
             this.NameOfEmployeeHourlyWage = new System.Windows.Forms.TextBox();
             this.Acсept = new System.Windows.Forms.Button();
+            this.employeeControl1 = new ApplicationLoader.EmployeeControl();
+            this.button1 = new System.Windows.Forms.Button();
             this.SalaryRateGroupBoxRate.SuspendLayout();
             this.HourlyWageGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -385,12 +387,33 @@
             this.Acсept.UseVisualStyleBackColor = true;
             this.Acсept.Click += new System.EventHandler(this.Acсept_Click);
             // 
+            // employeeControl1
+            // 
+            this.employeeControl1.Employee = null;
+            this.employeeControl1.Location = new System.Drawing.Point(443, 12);
+            this.employeeControl1.Name = "employeeControl1";
+            this.employeeControl1.ReadOnly = false;
+            this.employeeControl1.Size = new System.Drawing.Size(434, 351);
+            this.employeeControl1.TabIndex = 5;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(443, 362);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // CreateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(442, 394);
+            this.ClientSize = new System.Drawing.Size(892, 394);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.employeeControl1);
             this.Controls.Add(this.HourlyWageGroupBox);
             this.Controls.Add(this.Acсept);
             this.Controls.Add(this.Cancel);
@@ -398,8 +421,6 @@
             this.Controls.Add(this.HourlyWage);
             this.Controls.Add(this.SalaryRate);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(458, 433);
-            this.MinimumSize = new System.Drawing.Size(458, 433);
             this.Name = "CreateForm";
             this.Text = "Сотрудник";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CreateForm_FormClosed);
@@ -449,5 +470,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Acсept;
+        private EmployeeControl employeeControl1;
+        private System.Windows.Forms.Button button1;
     }
 }

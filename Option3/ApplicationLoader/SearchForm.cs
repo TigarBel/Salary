@@ -72,7 +72,6 @@ namespace ApplicationLoader
                 {
                     MessageBox.Show("Этого(их) сотрудника(ов) нет в списке.");
                 }
-                _localList.Clear();
             }
             catch
             {

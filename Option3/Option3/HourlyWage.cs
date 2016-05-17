@@ -96,7 +96,8 @@ namespace Option3
         /// <returns></returns>
         public string ShowPersonalSettings()
         {
-            return " Почасовая плата работника " + SalaryPerHour + "руб." + " по рабочему графику " + Hour + " часов в месяц";
+            return  "Работника " + NameOfWork + " почасовая плата " + SalaryPerHour + "руб." + 
+                " по рабочему графику " + Hour + " часов в месяц";
         }
         /// <summary>
         /// Выписать штраф
@@ -149,7 +150,7 @@ namespace Option3
             {
                 if (value != "Почасовая оплата")
                 {
-                    throw new ArgumentException(" Ошибка в названии");
+                    throw new ArgumentException(" Ошибка в названии заработной платы");
                 }
                 _nameofsalary = value;
             }

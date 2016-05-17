@@ -148,7 +148,7 @@ namespace Option3
             {
                 if (value != "Оклад по ставке")
                 {
-                    throw new ArgumentException(" Ошибка в названии");
+                    throw new ArgumentException(" Ошибка в наименовании заработной платы");
                 }
                 _nameofsalary = value;
             }

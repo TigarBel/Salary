@@ -36,7 +36,7 @@ namespace ApplicationLoader
                     int salary = Convert.ToInt32(SalaryOfEmployee.Text);
                     string nameofwork = NameOfWorkSalaryRate.Text;
 
-                    _employee = new SalaryRate(name, surname, patronymic, age, rate, salary, nameofwork);
+                    Employee = new SalaryRate(name, surname, patronymic, age, rate, salary, nameofwork);
                 }
                 if (HourlyWage.Checked == true) // Почасовая оплата
                 {
@@ -48,14 +48,14 @@ namespace ApplicationLoader
                     int hour = Convert.ToInt32(Hour.Text);
                     string nameofwork = NameOfWorkOfEmployeeHourlyWage.Text;
 
-                    _employee = new HourlyWage(name, surname, patronymic, age, salaryperhour, hour, nameofwork);
+                    Employee = new HourlyWage(name, surname, patronymic, age, salaryperhour, hour, nameofwork);
                 }
                 SalaryRate.Checked = false;
                 HourlyWage.Checked = false;
                 SalaryRateGroupBoxRate.Visible = false;
                 HourlyWageGroupBox.Visible = false;
                 _check = true;
-                this.Close();                                                
+                this.Close();                
             }
             catch (NullReferenceException exception)
             {
@@ -80,11 +80,13 @@ namespace ApplicationLoader
             set
             {
                 _employee = value;
+                employeeControl1.Employee = value;
             }
         }
 
         private void Cancel_Click(object sender, EventArgs e)
         {
+            employeeControl1.ClearControl();
             this.Close();
         }
 
@@ -156,7 +158,6 @@ namespace ApplicationLoader
 
         private void CreateForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //_employee = null;
             if (!_check)
             {
                 var result = MessageBox.Show("Хотите выйти из редактора?", "Сообщение", MessageBoxButtons.YesNo);
@@ -183,6 +184,29 @@ namespace ApplicationLoader
             SalaryPerHour.Text = string.Empty;
             Hour.Text = string.Empty;
             NameOfWorkOfEmployeeHourlyWage.Text = string.Empty;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Employee = employeeControl1.Employee;
+                employeeControl1.ClearControl();
+                _check = true;
+                this.Close();
+            }
+            catch (NullReferenceException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            catch (ArgumentException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            catch (PersonException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
     }
 }

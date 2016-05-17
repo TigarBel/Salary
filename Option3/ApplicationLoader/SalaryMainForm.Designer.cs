@@ -51,6 +51,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.employeeControl1 = new ApplicationLoader.EmployeeControl();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -144,6 +145,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(1137, 473);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter_1);
             // 
             // number
             // 
@@ -235,20 +237,32 @@
             this.CreateToolStripMenuItem2});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1169, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1602, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // employeeControl1
+            // 
+            this.employeeControl1.Employee = null;
+            this.employeeControl1.Location = new System.Drawing.Point(1167, 46);
+            this.employeeControl1.Name = "employeeControl1";
+            this.employeeControl1.ReadOnly = false;
+            this.employeeControl1.Size = new System.Drawing.Size(433, 386);
+            this.employeeControl1.TabIndex = 2;
             // 
             // SalaryMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1169, 566);
+            this.ClientSize = new System.Drawing.Size(1602, 557);
+            this.Controls.Add(this.employeeControl1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(1618, 596);
+            this.MinimumSize = new System.Drawing.Size(1618, 596);
             this.Name = "SalaryMainForm";
             this.Text = "База по зарплатам сотрудников";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SalaryMainForm_FormClosing);
@@ -285,7 +299,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn salary;
         private System.Windows.Forms.DataGridViewTextBoxColumn description;
         private System.Windows.Forms.DataGridViewTextBoxColumn salaryAccrual;
-
+        private EmployeeControl employeeControl1;
     }
 }
 
