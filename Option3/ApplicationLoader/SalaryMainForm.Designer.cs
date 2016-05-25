@@ -49,9 +49,7 @@
             this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
-            this.employeeControl1 = new ApplicationLoader.EmployeeControl();
+            this.employeeControlMainForm = new ApplicationLoader.EmployeeControl();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -75,7 +73,7 @@
             // 
             // RandomEmploy
             // 
-            this.RandomEmploy.Location = new System.Drawing.Point(342, 498);
+            this.RandomEmploy.Location = new System.Drawing.Point(1016, 498);
             this.RandomEmploy.Name = "RandomEmploy";
             this.RandomEmploy.Size = new System.Drawing.Size(127, 23);
             this.RandomEmploy.TabIndex = 5;
@@ -85,7 +83,7 @@
             // 
             // SearchEmployee
             // 
-            this.SearchEmployee.Location = new System.Drawing.Point(528, 498);
+            this.SearchEmployee.Location = new System.Drawing.Point(529, 498);
             this.SearchEmployee.Name = "SearchEmployee";
             this.SearchEmployee.Size = new System.Drawing.Size(175, 23);
             this.SearchEmployee.TabIndex = 4;
@@ -105,7 +103,7 @@
             // 
             // RemoveEmployee
             // 
-            this.RemoveEmployee.Location = new System.Drawing.Point(962, 498);
+            this.RemoveEmployee.Location = new System.Drawing.Point(342, 498);
             this.RemoveEmployee.Name = "RemoveEmployee";
             this.RemoveEmployee.Size = new System.Drawing.Size(181, 23);
             this.RemoveEmployee.TabIndex = 2;
@@ -145,7 +143,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(1137, 473);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter_1);
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // number
             // 
@@ -241,14 +239,14 @@
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // employeeControl1
+            // employeeControlMainForm
             // 
-            this.employeeControl1.Employee = null;
-            this.employeeControl1.Location = new System.Drawing.Point(1167, 46);
-            this.employeeControl1.Name = "employeeControl1";
-            this.employeeControl1.ReadOnly = false;
-            this.employeeControl1.Size = new System.Drawing.Size(433, 386);
-            this.employeeControl1.TabIndex = 2;
+            this.employeeControlMainForm.Employee = null;
+            this.employeeControlMainForm.Location = new System.Drawing.Point(1167, 46);
+            this.employeeControlMainForm.Name = "employeeControlMainForm";
+            this.employeeControlMainForm.ReadOnly = false;
+            this.employeeControlMainForm.Size = new System.Drawing.Size(433, 386);
+            this.employeeControlMainForm.TabIndex = 2;
             // 
             // SalaryMainForm
             // 
@@ -256,7 +254,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1602, 557);
-            this.Controls.Add(this.employeeControl1);
+            this.Controls.Add(this.employeeControlMainForm);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -284,12 +282,10 @@
         private System.Windows.Forms.Button AddEmployee;
         private System.Windows.Forms.Button RemoveEmployee;
         private System.Windows.Forms.Button ChangeDescription;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button SearchEmployee;
         private System.Windows.Forms.ToolStripMenuItem CreateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem OpenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SaveToolStripMenuItem;
-        private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.Button RandomEmploy;
         private System.Windows.Forms.DataGridViewTextBoxColumn number;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
@@ -299,7 +295,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn salary;
         private System.Windows.Forms.DataGridViewTextBoxColumn description;
         private System.Windows.Forms.DataGridViewTextBoxColumn salaryAccrual;
-        private EmployeeControl employeeControl1;
+        private EmployeeControl employeeControlMainForm;
     }
 }
 

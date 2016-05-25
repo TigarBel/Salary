@@ -1,0 +1,7 @@
+D:\Salary\Option3\Option3\bin\Release\Option3.dll
+D:\Salary\Option3\Option3\bin\Release\Option3.pdb
+D:\Salary\Option3\Option3\bin\Release\Newtonsoft.Json.dll
+D:\Salary\Option3\Option3\bin\Release\Newtonsoft.Json.xml
+D:\Salary\Option3\Option3\obj\Release\Option3.dll
+D:\Salary\Option3\Option3\obj\Release\Option3.pdb
+D:\Salary\Option3\Option3\obj\Release\Model.csprojResolveAssemblyReference.cache

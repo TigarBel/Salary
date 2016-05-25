@@ -22,26 +22,13 @@ namespace ApplicationLoader
         {
             set
             {
-                if (value)
-                {
-                    NameOfEmployeeSalaryRate.ReadOnly = true;
-                    SurnameOfEmployeeSalaryRate.ReadOnly = true;
-                    PatronymicOfEmployeeSalaryRate.ReadOnly = true;
-                    AgeOfEmployeeSalaryRate.ReadOnly = true;
-                    RateOfEmployee.ReadOnly = true;
-                    SalaryOfEmployee.ReadOnly = true;
-                    NameOfWorkSalaryRate.ReadOnly = true;
-                }
-                else
-                {
-                    NameOfEmployeeSalaryRate.ReadOnly = false;
-                    SurnameOfEmployeeSalaryRate.ReadOnly = false;
-                    PatronymicOfEmployeeSalaryRate.ReadOnly = false;
-                    AgeOfEmployeeSalaryRate.ReadOnly = false;
-                    RateOfEmployee.ReadOnly = false;
-                    SalaryOfEmployee.ReadOnly = false;
-                    NameOfWorkSalaryRate.ReadOnly = false;
-                }
+                NameOfEmployeeSalaryRate.ReadOnly = value;
+                SurnameOfEmployeeSalaryRate.ReadOnly = value;
+                PatronymicOfEmployeeSalaryRate.ReadOnly = value;
+                AgeOfEmployeeSalaryRate.ReadOnly = value;
+                RateOfEmployee.ReadOnly = value;
+                SalaryOfEmployee.ReadOnly = value;
+                NameOfWorkSalaryRate.ReadOnly = value;
             }
         }
 
@@ -61,54 +48,34 @@ namespace ApplicationLoader
                                 NameOfWorkSalaryRate.Text);                    
                     return employee;
                 }
-                /*
-                catch (FormatException exception)
+                catch (Exception exception)
                 {
-                    MessageBox.Show(" В чём то проблема.");
-                    return null;
-                }
-                */
-                catch (NullReferenceException exception)
-                {
-                    MessageBox.Show(exception.Message);
-                    return null;
-                }
-                catch (ArgumentException exception)
-                {
-                    MessageBox.Show(exception.Message);
-                    return null;
-                }
-                catch (PersonException exception)
-                {
-                    MessageBox.Show(exception.Message);
-                    return null;
+                    if (exception is NullReferenceException || exception is ArgumentException || exception is PersonException)
+                    {
+                        MessageBox.Show(exception.Message);
+                        return null;
+                    }
+                    else if (exception is FormatException)
+                    {
+                        MessageBox.Show(" В поле: <Возраст>; <Ставка>; <Оклад> - было введено не числовое значение.");
+                        return null;
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
             set
             {
-                try
-                {
-                    var salaryEmployee = (SalaryRate)value;
-                    NameOfEmployeeSalaryRate.Text = salaryEmployee.Name;
-                    SurnameOfEmployeeSalaryRate.Text = salaryEmployee.Surname;
-                    PatronymicOfEmployeeSalaryRate.Text = salaryEmployee.Patronymic;
-                    AgeOfEmployeeSalaryRate.Text = Convert.ToString(salaryEmployee.Age);
-                    RateOfEmployee.Text = Convert.ToString(salaryEmployee.Rate);
-                    SalaryOfEmployee.Text = Convert.ToString(salaryEmployee.Salary);
-                    NameOfWorkSalaryRate.Text = Convert.ToString(salaryEmployee.NameOfWork);
-                }
-                catch (NullReferenceException exception)
-                {
-                    MessageBox.Show(exception.Message);                    
-                }
-                catch (ArgumentException exception)
-                {
-                    MessageBox.Show(exception.Message);
-                }
-                catch (PersonException exception)
-                {
-                    MessageBox.Show(exception.Message);
-                }
+                var salaryEmployee = (SalaryRate)value;
+                NameOfEmployeeSalaryRate.Text = salaryEmployee.Name;
+                SurnameOfEmployeeSalaryRate.Text = salaryEmployee.Surname;
+                PatronymicOfEmployeeSalaryRate.Text = salaryEmployee.Patronymic;
+                AgeOfEmployeeSalaryRate.Text = Convert.ToString(salaryEmployee.Age);
+                RateOfEmployee.Text = Convert.ToString(salaryEmployee.Rate);
+                SalaryOfEmployee.Text = Convert.ToString(salaryEmployee.Salary);
+                NameOfWorkSalaryRate.Text = Convert.ToString(salaryEmployee.NameOfWork);
             }
         }
         // Смываем с полей лишние символы

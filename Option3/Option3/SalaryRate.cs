@@ -95,7 +95,7 @@ namespace Option3
         /// <returns></returns>
         public string ShowPersonalSettings()
         {
-            return " Оклад " + Salary + "руб. по ставке " + Rate + " работника " + NameOfWork;
+            return "Специльность " + NameOfWork + "; оклад " + Salary + "руб.; ставка " + Rate;
         }
         /// <summary>
         /// Выписать штраф
@@ -118,7 +118,7 @@ namespace Option3
             {
                 if ((value <= 0) || (value > 1))
                 {
-                    throw new ArgumentException(" Ставка не должна быть меньше 0 и больше 1!");
+                    throw new ArgumentException(" Ставка не должна быть меньше 0,1 и больше 1!");
                 }
                 _rate = value;
             }

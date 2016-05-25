@@ -22,26 +22,13 @@ namespace ApplicationLoader
         {
             set
             {
-                if (value)
-                {
-                    NameOfEmployeeHourlyWage.ReadOnly = true;
-                    SurnameOfEmployeeHourlyWage.ReadOnly = true;
-                    PatronymicOfEmployeeHourlyWage.ReadOnly = true;
-                    AgeOfEmployeeHourlyWage.ReadOnly = true;
-                    SalaryPerHour.ReadOnly = true;
-                    Hour.ReadOnly = true;
-                    NameOfWorkOfEmployeeHourlyWage.ReadOnly = true;
-                }
-                else
-                {
-                    NameOfEmployeeHourlyWage.ReadOnly = false;
-                    SurnameOfEmployeeHourlyWage.ReadOnly = false;
-                    PatronymicOfEmployeeHourlyWage.ReadOnly = false;
-                    AgeOfEmployeeHourlyWage.ReadOnly = false;
-                    SalaryPerHour.ReadOnly = false;
-                    Hour.ReadOnly = false;
-                    NameOfWorkOfEmployeeHourlyWage.ReadOnly = false;
-                }
+                NameOfEmployeeHourlyWage.ReadOnly = value;
+                SurnameOfEmployeeHourlyWage.ReadOnly = value;
+                PatronymicOfEmployeeHourlyWage.ReadOnly = value;
+                AgeOfEmployeeHourlyWage.ReadOnly = value;
+                SalaryPerHour.ReadOnly = value;
+                Hour.ReadOnly = value;
+                NameOfWorkOfEmployeeHourlyWage.ReadOnly = value;                
             }
         }
 
@@ -52,63 +39,43 @@ namespace ApplicationLoader
                 try
                 {
                     HourlyWage employee = new HourlyWage(
-                                NameOfEmployeeHourlyWage.Text,
-                                SurnameOfEmployeeHourlyWage.Text,
-                                PatronymicOfEmployeeHourlyWage.Text,
-                                Convert.ToInt32(AgeOfEmployeeHourlyWage.Text),
-                                Convert.ToInt32(SalaryPerHour.Text),
-                                Convert.ToInt32(Hour.Text),
-                                NameOfWorkOfEmployeeHourlyWage.Text);
+                        NameOfEmployeeHourlyWage.Text,
+                        SurnameOfEmployeeHourlyWage.Text,
+                        PatronymicOfEmployeeHourlyWage.Text,
+                        Convert.ToInt32(AgeOfEmployeeHourlyWage.Text),
+                        Convert.ToInt32(SalaryPerHour.Text),
+                        Convert.ToInt32(Hour.Text),
+                        NameOfWorkOfEmployeeHourlyWage.Text);
                     return employee;
-                }
-                /*
-                catch (FormatException exception)
+                }                
+                catch (Exception exception)
                 {
-                    MessageBox.Show(" В чём то проблема.");
-                    return null;
-                }
-                */
-                catch (NullReferenceException exception)
-                {
-                    MessageBox.Show(exception.Message);
-                    return null;
-                }
-                catch (ArgumentException exception)
-                {
-                    MessageBox.Show(exception.Message);
-                    return null;
-                }
-                catch (PersonException exception)
-                {
-                    MessageBox.Show(exception.Message);
-                    return null;
+                    if (exception is NullReferenceException || exception is ArgumentException || exception is PersonException)
+                    {
+                        MessageBox.Show(exception.Message);
+                        return null;
+                    }
+                    else if(exception is FormatException)
+                    {
+                        MessageBox.Show(" В поле: <Возраст>; <Плата за один час>; <Часов в месяц> - было введено не числовое значение.");
+                        return null;
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
             set
             {
-                try
-                {
-                    var hourlyWageEmployee = (HourlyWage)value;
-                    NameOfEmployeeHourlyWage.Text = hourlyWageEmployee.Name;
-                    SurnameOfEmployeeHourlyWage.Text = hourlyWageEmployee.Surname;
-                    PatronymicOfEmployeeHourlyWage.Text = hourlyWageEmployee.Patronymic;
-                    AgeOfEmployeeHourlyWage.Text = Convert.ToString(hourlyWageEmployee.Age);
-                    SalaryPerHour.Text = Convert.ToString(hourlyWageEmployee.SalaryPerHour);
-                    Hour.Text = Convert.ToString(hourlyWageEmployee.Hour);
-                    NameOfWorkOfEmployeeHourlyWage.Text = Convert.ToString(hourlyWageEmployee.NameOfWork);
-                }
-                catch (NullReferenceException exception)
-                {
-                    MessageBox.Show(exception.Message);
-                }
-                catch (ArgumentException exception)
-                {
-                    MessageBox.Show(exception.Message);
-                }
-                catch (PersonException exception)
-                {
-                    MessageBox.Show(exception.Message);
-                }
+                var hourlyWageEmployee = (HourlyWage)value;
+                NameOfEmployeeHourlyWage.Text = hourlyWageEmployee.Name;
+                SurnameOfEmployeeHourlyWage.Text = hourlyWageEmployee.Surname;
+                PatronymicOfEmployeeHourlyWage.Text = hourlyWageEmployee.Patronymic;
+                AgeOfEmployeeHourlyWage.Text = Convert.ToString(hourlyWageEmployee.Age);
+                SalaryPerHour.Text = Convert.ToString(hourlyWageEmployee.SalaryPerHour);
+                Hour.Text = Convert.ToString(hourlyWageEmployee.Hour);
+                NameOfWorkOfEmployeeHourlyWage.Text = Convert.ToString(hourlyWageEmployee.NameOfWork);
             }
         }
         // Смываем с полей лишние символы

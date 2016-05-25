@@ -96,8 +96,7 @@ namespace Option3
         /// <returns></returns>
         public string ShowPersonalSettings()
         {
-            return  "Работника " + NameOfWork + " почасовая плата " + SalaryPerHour + "руб." + 
-                " по рабочему графику " + Hour + " часов в месяц";
+            return "Специльность " + NameOfWork + "; почасовая плата " + SalaryPerHour + "руб.; рабочий график " + Hour + " часов в месяц";
         }
         /// <summary>
         /// Выписать штраф
